@@ -1,0 +1,21 @@
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+user_login_registration:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /login
+        permanent: true
+user_confirmed_registration:
+    path: /register/confirmed
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /bonobo/list
+        permanent: true
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

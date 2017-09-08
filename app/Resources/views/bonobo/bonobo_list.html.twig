@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<!-- Friends -->
+
+<div class="container">
+    <div class="row selector" >
+
+        {% for bonobo in bonobos %}
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-6" id="div{{bonobo.id}}">
+            <div class="ui-block">
+                <div class="friend-item">
+                    <div class="friend-header-thumb">
+                    </div>
+
+                    <div class="friend-item-content">
+
+                        <div class="friend-avatar">
+                            <div class="author-thumb">
+                                {% if bonobo.fileName %}<img src="{{asset('app/img/'~ bonobo.fileName)}}" width="100px"  height="100px" alt="author">{% else %}
+                                <img src="{{asset('app/img/avatar1.jpg')}}" width="100px" width="100px" alt="author">{% endif %}
+                            </div>
+                            <div class="author-content">
+                                <a href="#" class="h5 author-name">{{bonobo.username}}</a>
+                                <div class="country">{{bonobo.name}}</div>
+                            </div>
+                        </div>
+                        <div class="control-block-button" data-swiper-parallax="-100" style="margin-bottom:20px;transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+
+                            
+                                <div id="add{{bonobo.id}}" {% if  bonobo  in app.user.friendList  %}
+ style="display:none;" {% endif %}>
+                                    <a href="#" onclick="addFriend({{bonobo.id}})"    class="btn btn-control bg-blue">
+                                        <i class="fa fa-plus" aria-hidden="true"></i></a></div>
+                     
+                                <div id="remove{{bonobo.id}}"   {% if  bonobo not in app.user.friendList  %}
+ style="display:none;" {% endif %}>
+                                    <a href="#" onclick="removeFriend({{bonobo.id}},true)" class="btn btn-control " style="background-color:rgb(221, 107, 85)">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a></div>
+                          
+                            
+                    
+
+                        </div>
+
+                        <div class="swiper-container" data-slide="fade">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="friend-count" data-swiper-parallax="-500">
+                                        <a href="#" class="friend-count-item">
+                                            <div class="h6">{{bonobo.age}}</div>
+                                            <div class="title">Age</div>
+                                        </a>
+                                        <a href="#" class="friend-count-item">
+                                            <div class="h6">{{bonobo.famille}}</div>
+                                            <div class="title">Famille</div>
+                                        </a>
+                                        <a href="#" class="friend-count-item">
+                                            <div class="h6">{{bonobo.race}}</div>
+                                            <div class="title">Race</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="author-content">
+                                <a href="#" class="h5 author-name">Nourriture</a>
+                                <div class="country">{{bonobo.nourriture}}</div>
+                      
+                            </div>
+
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+     
+    <div class="row">
+        <div class="col-md-4" style="display: block; margin: 50px auto">
+            <button class="btn btn-primary btn-lg full-width text-center" onclick="addMoreElements(true)">Show More  <img id="ajax-loader"   src="{{asset('app/img/ajax-loader.gif')}}" alt=""></button>
+        </div>
+    </div>
+</div>
+
+<!-- ... end Friends -->
+ 
+
+ 
+
+{% endblock %}

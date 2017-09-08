@@ -1,0 +1,52 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<div class="container">
+    <div class="row display-flex">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div class="landing-content">
+                <h1>Bienvenue au meilleur carnet d'adresse pour Bonobo</h1>
+            
+                <a href="{{path('fos_user_registration_register')}}" class="btn btn-md btn-border c-white">Register Now!</a>
+            </div>
+        </div>
+
+        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">{% if error %}<br>
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+            <div class="registration-login-form" style="min-height: auto !important;padding-left: 0">
+                
+                <div class="" id="profile" role="tabpanel" data-mh="log-tab">
+                    <div class="title h6">Connectez-vous à votre compte</div>
+                        <form action="{{ path("fos_user_security_check") }}" method="post" class="content">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                <div class="form-group label-floating is-empty">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                                <div class="form-group label-floating is-empty">
+                                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                                    <input type="password" id="password" name="_password" required="required" />
+                                </div>
+ 
+                          
+                                    <div class="checkbox checkbox-primary "  >
+
+                                    <input   type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                                    </div>
+                                
+                                    <input type="submit" class="btn btn-lg btn-primary full-width" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\Bonobo
+    from_email:
+        address: "ahmedbbhs123@gmail.com"
+        sender_name: "ahmedbbhs123@gmail.com"
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+    profile:
+        form:
+            type: AppBundle\Form\ProfileType

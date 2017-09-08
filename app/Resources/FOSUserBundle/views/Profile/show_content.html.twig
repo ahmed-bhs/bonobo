@@ -1,0 +1,104 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+ 
+
+
+
+
+
+
+
+
+<!-- Friends -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Mes amis :</h6>
+                </div>
+                <div class="ui-block-content">
+                    <ul class="widget w-faved-page js-zoom-gallery">
+						
+						{% set count = 0 %}
+
+                    	{% for friend in user.friendList %}
+                        <li>
+                            <a href="#">
+                            	{% if friend.fileName %} <img src="{{asset('app/img/'~ friend.fileName)}}" width="40px" height="40px" alt="author">  {% else %}  <img src="{{asset('app/img/avatar1.jpg')}}" width="40px" height="40px" alt="author"> {% endif %}
+                               
+                            </a>
+						
+						{% set count = count + 1 %}
+
+                        </li>
+                         {% endfor %}
+                        <li class="all-users">
+                       {{count}} 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Informations :</h6>
+                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                </div>
+                <div class="ui-block-content">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <ul class="widget w-personal-info item-block">
+                                <li>
+                                    <span class="title">Nom :</span>
+                                
+							</span>
+                                </li>
+                                <li>
+                                    <span class="title">Age :</span>
+                           
+                                </li>
+                                <li>
+                                    <span class="title">Famille:</span>
+                                
+                                </li>
+                                <li>
+                                    <span class="title">Noriture:</span>
+                                    
+                                </li>
+                                     <li>
+                                    <span class="title">Race:</span>
+                                  
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <ul class="widget w-personal-info item-block">
+                                <li>
+                     
+                                    <span class="text">{{ user.username }}</span>
+                                </li>
+                                <li>
+                                    
+                                    <span class="text">{{ user.age }}</span>
+                                </li>
+                                <li>
+                                       <span class="text">{{ user.famille }}</span>
+                                </li>
+                                <li>
+                                    <span class="text">{{ user.nourriture }} </span>
+                                </li> <li> <span class="text">{{ user.race }} </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ... end Friends -->

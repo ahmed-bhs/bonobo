@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+    <div class="row display-flex">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div class="landing-content">
+                <h1>Bienvenue au meilleur carnet d'adresse pour Bonobo</h1>
+     
+                <a href="{{path('fos_user_security_login')}}" class="btn btn-md btn-border c-white">Login!</a>
+            </div>
+        </div>
+
+        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
+            <div class="registration-login-form" style="min-height: auto !important;padding-left: 0">
+                
+                <div class="" id="profile" role="tabpanel" data-mh="log-tab">
+                    <div class="title h6">Inscription</div>
+
+				{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register content'}}) }}
+						<div class="row">
+
+							<div class="col-xl-12 col-lg-12 col-md-12">
+								<div class="form-group label-floating is-empty"><label for="username">username</label>
+									{{ form_widget(form.username) }}
+									<div class="form-group label-floating is-empty">
+										{{form_widget(form.plainPassword ) }}
+
+										<input class="btn btn-lg btn-primary full-width" type="submit" value="{{ 'registration.submit'|trans }}" />
+									</div>
+								</div>
+								{{ form_end(form) }}
+							</div>
+						</div>
+       			 </div>
+    		</div>
+		</div>
+	</div>
+	</div>

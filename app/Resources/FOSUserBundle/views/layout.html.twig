@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome Bonobo!{% endblock %}</title>
+        {% block stylesheets %}
+     
+          <link rel='stylesheet' id='sweet-alert-css-css'  href="{{asset('app/css/sweet-alert.css')}}" type='text/css' media='all' /> 
+            <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('app/Bootstrap/dist/css/bootstrap-reboot.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/Bootstrap/dist/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/Bootstrap/dist/css/bootstrap-grid.css')}}">
+
+    <!-- Theme Styles CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/theme-styles.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/blocks.css')}}">
+
+    <!-- Main Font -->
+    <script src="{{asset('app/js/webfontloader.min.js')}}"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
+
+    <!-- Styles for plugins -->
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/swiper.min.css')}}">
+
+    <!-- Styles for the checkbox input -->
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/checkbox.css')}}">
+      
+        {% endblock %}
+    </head>
+<body class="landing-page" style="background-color: #7c5ac2;"> 
+
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+
+        {% block javascripts %}
+
+
+        <!-- jQuery first, then Other JS. -->
+        <script src="{{asset('app/js/jquery-3.2.0.min.js')}}"></script>
+        <!-- Js effects for material design. + Tooltips -->
+        <script src="{{asset('app/js/material.min.js')}}"></script>
+        <!-- Helper scripts (Tabs, Equal height, Scrollbar, etc) -->
+        <script src="{{asset('app/js/theme-plugins.js')}}"></script>
+        <!-- Init functions -->
+
+        <!-- Select / Sorting script -->
+        <script src="{{asset('app/js/selectize.min.js')}}"></script>
+
+        <!-- Swiper / Sliders -->
+        <script src="{{asset('app/js/swiper.jquery.min.js')}}"></script>
+
+        <script src="{{asset('app/js/mediaelement-and-player.min.js')}}"></script>
+        <script src="{{asset('app/js/mediaelement-playlist-plugin.min.js')}}"></script>
+         {# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> #}       
+      
+
+        <script type='text/javascript' src="{{asset('app/js/sweet-alert.min.js')}}"></script>
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ asset('app/js/app.js')}}"></script>
+
+      
+        {% endblock %}
+    </body>
+</html>
